@@ -34,8 +34,7 @@ setup(
         url = 'https://github.com/mattpaletta/configparser',
         packages = find_packages(),
         include_package_data = True,
-        # TODO:// Fix this, so pip only installs these for the temp setup.
-        install_requires = [],
+        install_requires = ["PyYAML"],
         author = "Matthew Paletta",
         author_email = "mattpaletta@gmail.com",
         description = "Configuration library wrappers",
