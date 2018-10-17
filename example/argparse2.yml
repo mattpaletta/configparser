@@ -1,0 +1,18 @@
+main:
+  a:
+    required: False
+    type: "int"
+    help: "Specify Arg A"
+    default: 2
+
+  b:
+    required: False
+    type: "int"
+    default: 1
+    help: "Specify Arg B"
+
+  config:
+    required: False
+    type: "str"
+    default: "config.yml"
+    help: "Specify other config files to apply over top"

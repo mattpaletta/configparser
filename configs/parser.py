@@ -1,4 +1,7 @@
 import json
+import logging
+from typing import Dict, List
+
 import yaml
 import argparse
 import os
@@ -10,9 +13,11 @@ class Parser(object):
                  environ_key_mapping: Dict[str, str] = {}):
         assert os.path.exists(argparse_file), "Argparse file not found."
         self._argparse_file = argparse_file
-        self._argparse_file_type = argparse_file.split(".")[-1]
         self._config_file_key = config_file_key
         self._environ_key_mapping: Dict[str, str] = environ_key_mapping
+
+    def get(self):
+        return self._layer_configs()
 
     def __get_os_environ(self):
         found_keys = {}
@@ -23,13 +28,7 @@ class Parser(object):
         return found_keys
 
     def __get_args(self):
-        with open(self._argparse_file, "r") as file:
-            if self._argparse_file_type == "json":
-                configs = json.load(file)
-            elif self._argparse_file_type in ["yaml", "yml"]:
-                configs = yaml.load(file)
-            else:
-                raise NotImplementedError("File type not implemented")
+        configs = self._load_config_file(self._argparse_file)
 
         arg_lists = []
         parser = argparse.ArgumentParser()
@@ -39,8 +38,13 @@ class Parser(object):
             arg = parser.add_argument_group(g_name)
             arg_lists.append(arg)
 
-            for conf in group.keys():
-                arg.add_argument("--" + str(conf), **group[conf])
+            for conf, value in group.items():
+                if "type" in value.keys():
+                    if value["type"] == "int":
+                        value["type"] = int
+                    elif value["type"] == "str":
+                        value["str"] = str
+                arg.add_argument("--" + str(conf), **value)
 
         # Arguments from command line and default values
         args = vars(parser.parse_args())
@@ -49,32 +53,75 @@ class Parser(object):
 
         parsed, unparsed = parser.parse_known_args()
 
-        return parsed
+        return defaults, parsed.__dict__
 
-    def _replace_args(self, old: dict, new: dict, p1: List[str], p2: List[str]):
-        new_dict = {}
-        for key, value in old:
-            if type(val) is dict:
-                if key in new.keys():
-                    new_dict[key] = self._replace_args(old = value,
-                                                       new = new[key],
-                                                       p1 = p1.append(key),
-                                                       p2 = p2.append(key))
+    def _replace_args(self, old: dict, new: dict):
+        def helper(old, new, p1, p2):
+            new_dict = {}
+            for key, value in old.items():
+                if type(value) is dict:
+                    if key in new.keys():
+                        new_dict[key] = helper(old = value,
+                                               new = new[key],
+                                               p1 = p1.append(key),
+                                               p2 = p2.append(key))
+                    else:
+                        new_dict[key] = value
                 else:
-                    new_dict[key] = value
-            else:
-                if key in new.keys():
-                    new_dict[key] = new[key]
-                else:
-                    new_dict[key] = value
-        return new_dict
+                    if key in new.keys():
+                        new_dict[key] = new[key]
+                    else:
+                        new_dict[key] = value
+            return new_dict
+        return helper(old, new, [], [])
 
-    def _layer_configs(self, runtime_configs):
+    def _layer_configs(self):
         environ = self.__get_os_environ()
-        config_files = self._config_file_key
-        if type(config_files) is list:
-            pass
-        elif type(config_files) is str:
-            pass
+
+        logging.info("Getting defaults and runtime parameters")
+        final_configs, runtime_configs = self.__get_args()
+
+        if self._config_file_key is None:
+            config_files_to_read = []
+        elif os.path.exists(self._config_file_key):
+            config_files_to_read = self._config_file_key
+        elif self._config_file_key in runtime_configs.keys():
+            config_files_to_read = runtime_configs[self._config_file_key]
+        elif self._config_file_key in final_configs.keys():
+            config_files_to_read = final_configs[self._config_file_key]
+        else:
+            config_files_to_read = []
+
+        logging.info("Replacing with config files")
+        # Replace with config files
+        if type(config_files_to_read) is list:
+            for f in config_files_to_read:
+                final_configs = self._replace_args(old = final_configs,
+                                                   new = self._load_config_file(f))
+        elif type(config_files_to_read) is str:
+            final_configs = self._replace_args(old = final_configs,
+                                               new = self._load_config_file(config_files_to_read))
+
+        if len(environ.keys()) > 0:
+            logging.info("Replacing with environment variables.")
+            final_configs = self._replace_args(old = final_configs,
+                                               new = environ)
+        if len(runtime_configs.keys()) > 0:
+            logging.info("Replacing with runtime arguments.")
+            final_configs = self._replace_args(old = final_configs,
+                                               new = runtime_configs)
+
+        return final_configs
 
 
+    def _load_config_file(self, file_name):
+        file_type = file_name.split(".")[-1]
+
+        with open(file_name, "r") as file:
+            if file_type == "json":
+                configs = json.load(file)
+            elif file_type in ["yaml", "yml"]:
+                configs = yaml.load(file)
+            else:
+                raise NotImplementedError("File type not implemented")
+        return configs

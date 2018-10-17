@@ -1,0 +1,12 @@
+main:
+  a:
+    required: False
+    type: "int"
+    help: "Specify Arg A"
+    default: 2
+
+  b:
+    required: False
+    type: "int"
+    default: 3
+    help: "Specify Arg B"
