@@ -13,6 +13,4 @@ main:
 
   config:
     required: False
-    type: "str"
-    default: "config.yml"
     help: "Specify other config files to apply over top"

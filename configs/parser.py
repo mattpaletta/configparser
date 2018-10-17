@@ -9,7 +9,7 @@ import os
 
 class Parser(object):
     def __init__(self, argparse_file: str,
-                 config_file_key: str = None,
+                 config_file_key: str = "",
                  environ_key_mapping: Dict[str, str] = {}):
         assert os.path.exists(argparse_file), "Argparse file not found."
         self._argparse_file = argparse_file
@@ -75,11 +75,34 @@ class Parser(object):
             return new_dict
         return helper(old, new, [], [])
 
+    def _intercept_configs(self, old, new):
+        def helper(old, new, p1, p2):
+            new_dict = {}
+            for key, value in old.items():
+                if type(value) is dict:
+                    if key in new.keys():
+                        new_dict[key] = helper(old = value,
+                                               new = new[key],
+                                               p1 = p1.append(key),
+                                               p2 = p2.append(key))
+                    else:
+                        new_dict[key] = value
+                else:
+                    if key in new.keys():
+                        if new[key] != old[key]:
+                            new_dict[key] = new[key]
+                    else:
+                        new_dict[key] = value
+            return new_dict
+        return helper(old, new, [], [])
+
     def _layer_configs(self):
         environ = self.__get_os_environ()
 
         logging.info("Getting defaults and runtime parameters")
         final_configs, runtime_configs = self.__get_args()
+
+        runtime_configs = self._intercept_configs(final_configs, runtime_configs)
 
         if self._config_file_key is None:
             config_files_to_read = []
@@ -113,10 +136,8 @@ class Parser(object):
 
         return final_configs
 
-
     def _load_config_file(self, file_name):
         file_type = file_name.split(".")[-1]
-
         with open(file_name, "r") as file:
             if file_type == "json":
                 configs = json.load(file)

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d617c2e6-64b0-49f4-9a3c-38e6b1e1ed1d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/argparse2.yml" beforeDir="false" afterPath="$PROJECT_DIR$/example/argparse2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/run_tests.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/run_tests.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +33,7 @@
           <entry key="gitignore" value="1" />
           <entry key="py" value="7" />
           <entry key="sh" value="1" />
-          <entry key="yml" value="4" />
+          <entry key="yml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -40,23 +41,23 @@
           <entry key="Bash" value="1" />
           <entry key="Git file" value="1" />
           <entry key="Python" value="7" />
-          <entry key="YAML" value="4" />
+          <entry key="YAML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="9" />
-          <entry key="py" value="2988" />
-          <entry key="sh" value="115" />
+          <entry key="py" value="3157" />
+          <entry key="sh" value="142" />
           <entry key="yml" value="331" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="115" />
+          <entry key="Bash" value="142" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="2988" />
+          <entry key="Python" value="3157" />
           <entry key="YAML" value="331" />
         </counts>
       </usages-collector>
@@ -65,17 +66,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configs/parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+            <state relative-caret-position="113">
+              <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#786#1466#0" />
-                <marker date="1539805546448" expanded="true" signature="119:124" ph="..." />
-                <marker date="1539805546448" expanded="true" signature="525:568" ph="..." />
-                <marker date="1539805546448" expanded="true" signature="1856:1869" ph="..." />
+                <marker date="1539806704171" expanded="true" signature="119:124" ph="..." />
+                <marker date="1539806704171" expanded="true" signature="523:566" ph="..." />
+                <marker date="1539806704171" expanded="true" signature="1854:1867" ph="..." />
+                <marker date="1539806704171" expanded="true" signature="2634:3466" ph="..." />
               </folding>
             </state>
           </provider>
@@ -84,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="609">
               <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -96,8 +98,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/argparse.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state relative-caret-position="110">
+              <caret line="5" column="14" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/argparse2.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -114,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/ex_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="66">
+              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -123,17 +143,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/run_tests.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+            <state relative-caret-position="176">
+              <caret line="8" column="49" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="88">
+              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -154,15 +174,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/configs/parser.py" />
         <option value="$PROJECT_DIR$/example/main.py" />
         <option value="$PROJECT_DIR$/example/ex_config.py" />
-        <option value="$PROJECT_DIR$/example/argparse2.yml" />
         <option value="$PROJECT_DIR$/example/argparse.yml" />
         <option value="$PROJECT_DIR$/example/config.yml" />
-        <option value="$PROJECT_DIR$/example/run_tests.sh" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/example/run_tests.sh" />
+        <option value="$PROJECT_DIR$/example/argparse2.yml" />
+        <option value="$PROJECT_DIR$/configs/parser.py" />
       </list>
     </option>
   </component>
@@ -371,20 +391,6 @@
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/configs/parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="78" column="41" lean-forward="true" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#786#1466#0" />
-            <marker date="1539805546448" expanded="true" signature="119:124" ph="..." />
-            <marker date="1539805546448" expanded="true" signature="525:568" ph="..." />
-            <marker date="1539805546448" expanded="true" signature="1856:1869" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/ex_basic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -392,44 +398,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/argparse.yml">
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="88">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/run_tests.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ex_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="4" selection-start-column="4" selection-end-column="4" />
+          <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/argparse2.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/ex_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/run_tests.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        <state relative-caret-position="330">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="609">
           <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -437,10 +443,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
+    <entry file="file://$PROJECT_DIR$/example/argparse.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        <state relative-caret-position="110">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#786#1466#0" />
+            <marker date="1539806704171" expanded="true" signature="119:124" ph="..." />
+            <marker date="1539806704171" expanded="true" signature="523:566" ph="..." />
+            <marker date="1539806704171" expanded="true" signature="1854:1867" ph="..." />
+            <marker date="1539806704171" expanded="true" signature="2634:3466" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
