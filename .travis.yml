@@ -2,18 +2,43 @@ sudo: required
 language: python
 cache: pip
 
+dist: trusty
+sudo: false
+
+# For a list of available versions, run
+#     aws s3 ls s3://travis-python-archives/binaries/ubuntu/14.04/x86_64/
+#
+# Python 3.7+ needs a newer version of openssl than is available in trusty,
+# so these must run on a newer platform (and since travis doesn't yet have
+# containers for xenial, those must use VMs).
+# YAML magic from https://github.com/travis-ci/travis-ci/issues/9069#issuecomment-401924248
+.mixins:
+- &xenial-mixin
+  dist: xenial
+  sudo: true
+  addons:
+    apt:
+      packages:
+        - libgnutls-dev
+
 python:
   - "3.6"
-  - "3.7"
-  - "3.8"
+  - <<: *xenial-mixin
+    python: 3.7
+    python: 3.8
+  - python: pypy3.6-dev
+  - <<: *xenial-mixin
   
-  # PyPy versions
-  - "pypy3.6"
-  - "pypy3.7"
-  - "pypy3.8"
-
   - "nightly"
-  
+
+install:
+    # On nightly, upgrade setuptools first to work around
+    # https://github.com/pypa/setuptools/issues/1257
+    - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then travis_retry pip install -U setuptools; fi
+    - if [[ $TRAVIS_PYTHON_VERSION != 'pypy'* ]]; then travis_retry pip install pycurl; fi
+    # On travis the extension should always be built
+    - travis_retry python setup.py install
+ 
 install:
   - pip install mypy
   - pip install .
