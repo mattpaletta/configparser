@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
         name = "config_parser",
-        version = "0.0.1",
+        version = "0.0.2",
         url = 'https://github.com/mattpaletta/configs',
         packages = find_packages(),
         include_package_data = True,
