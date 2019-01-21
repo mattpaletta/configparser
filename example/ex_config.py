@@ -1,4 +1,4 @@
-from configs.parser import Parser
+from configs import Parser
 
 if __name__ == "__main__":
     p = Parser(argparse_file = "argparse2.yml",

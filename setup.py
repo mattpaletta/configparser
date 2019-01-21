@@ -1,10 +1,3 @@
-import inspect
-import os
-import subprocess
-import sys
-from distutils.command.build import build
-from setuptools.command.install import install
-
 try:
     from setuptools import setup, find_packages
 except ImportError:
@@ -13,42 +6,30 @@ except ImportError:
     ez_setup.use_setuptools()
     from setuptools import setup, find_packages
 
-
-class BuildCommand(build):
-    def run(self):
-        build.run(self)
-
-
-class InstallCommand(install):
-    def run(self):
-        if not self._called_from_setup(inspect.currentframe()):
-            # Run in backward-compatibility mode to support bdist_* commands.
-            install.run(self)
-        else:
-            install.do_egg_install(self)  # OR: install.do_egg_install(self)
-
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
         name = "config_parser",
         version = "0.0.1",
-        url = 'https://github.com/mattpaletta/configparser',
+        url = 'https://github.com/mattpaletta/configs',
         packages = find_packages(),
         include_package_data = True,
-        install_requires = ["PyYAML==3.13"],
+        install_requires = ["PyYAML>=4.2b1"],
         author = "Matthew Paletta",
         author_email = "mattpaletta@gmail.com",
         description = "Configuration library wrappers",
-        license = "BSD",
+        long_description=long_description,
+        long_description_content_type="text/markdown",
+        python_requires='>=3',
+        license = "GNU GPLv3",
         classifiers = [
-            'Development Status :: 3 - Alpha',
+            "Development Status :: 3 - Alpha",
             'Intended Audience :: Developers',
-            'License :: OSI Approved :: BSD License',
+            "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
             'Operating System :: OS Independent',
-            'Programming Language :: Python',
-            'Topic :: Communications',
+            "Programming Language :: Python :: 3",
+            "Topic :: Software Development :: Libraries",
+            "Natural Language :: English",
         ],
-        cmdclass = {
-            'build'  : BuildCommand,
-            'install': InstallCommand,
-        },
 )
