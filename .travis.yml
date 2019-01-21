@@ -13,11 +13,11 @@ install:
   # On nightly, upgrade setuptools first to work around
   # https://github.com/pypa/setuptools/issues/1257
   - if [[ $TRAVIS_PYTHON_VERSION == 'nightly' ]]; then travis_retry pip install -U setuptools; fi
-  - pip install mypy
+  - if [[ $TRAVIS_PYTHON_VERSION != 'pypy' ]]; then pip install mypy; fi
   - pip install .
 
 script:
-  - mypy -m configs
+  - if [[ $TRAVIS_PYTHON_VERSION != 'pypy' ]]; then mypy -m configs; fi
   - cd example && chmod +x run_tests.sh && ./run_tests.sh
 
 notifications:
