@@ -22,7 +22,9 @@ python:
   - "nightly"
   
 install:
+  - pip install mypy
   - pip install .
 
 script:
+  - mypy -m configs
   - cd example && chmod +x run_tests.sh && ./run_tests.sh
