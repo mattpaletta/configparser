@@ -7,7 +7,7 @@ Simplified runtime configs for Python
 Examples can be seen in `examples/`
 
 To use configparser:
-`pip install git+git://github.com/mattpaletta/configparser.git`
+`pip install config-parser`
 
 
 You can call it in your program using:
